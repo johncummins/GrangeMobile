@@ -17,6 +17,13 @@ and open the template in the editor.
 			integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
 			crossorigin="anonymous"
 		/>
+		<!-- jQuery -->
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		></script>
+
 		<link href="css/main.css" rel="stylesheet" />
 	</head>
 	<body>
@@ -40,24 +47,42 @@ and open the template in the editor.
 		</ul>
 
 		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1" style="margin-bottom: 200px">
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moduleModal" style="margin-bottom: 200px">
 			Launch demo modal
 		</button>
 
 		<!-- Modal -->
-		<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal fade" id="moduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+						<h3 id="mod_DetailsTitle" class="modal-title" id="exampleModalLongTitle" style="text-align: center">Module Details</h3>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">.</div>
+					<div class="modal-body">
+						<ul class="list-group">
+							<li class="list-group-item row d-flex">
+								<div class="col-5"><h5>Credits:</h5></div>
+								<div id="creditsDiv" class="col-7"></div>
+							</li>
+							<li class="list-group-item row d-flex">
+								<div class="col-5"><h5>Website:</h5></div>
+								<div id="websiteDiv" class="col-7"></div>
+							</li>
+							<li class="list-group-item row d-flex">
+								<div class="col-5"><h5>Due date:</h5></div>
+								<div id="dueDateDiv" class="col-7"></div>
+							</li>
+							<li class="list-group-item row d-flex">
+								<div class="col-5"><h5>Location:</h5></div>
+								<div id="locationDiv" class="col-7"></div>
+							</li>
+						</ul>
+					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Save changes</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
 					</div>
 				</div>
 			</div>
@@ -69,11 +94,15 @@ and open the template in the editor.
 				// if the first module is clicked
 				var modName1 = window.localStorage.getItem("moduleName1");
 				document.getElementById("mod_title").innerHTML = modName1;
+				document.getElementById("mod_DetailsTitle").innerHTML = modName1 + " module details";
 			} else {
 				// if the 2nd module is clicked set module title to
 				var modName2 = window.localStorage.getItem("moduleName2");
 				document.getElementById("mod_title").innerHTML = modName2;
 			}
+
+			let divNames = ["creditsDiv", "websiteDiv", "dueDateDiv", "locationDiv"];
+			let keyNames = ["credits", "website", "dueDate", "location"];
 
 			//function that matches the module number with the respective module name
 			$(document).ready(function () {
@@ -84,6 +113,9 @@ and open the template in the editor.
 							$("#module_title1").text(module.moduleName);
 							//save the 1st module name in local storage under moduleName1
 							window.localStorage.setItem("moduleName1", module.moduleName);
+
+							array1.forEach((element) => console.log(element));
+							$("#module_title1").text(module.moduleName);
 						}
 						if (clickedModValue == 2) {
 							//same for the 2nd module title
@@ -102,13 +134,6 @@ and open the template in the editor.
 			<a class="nav-item nav-link" style="background-color: white" href="#">Locations</a>
 			<a class="nav-item nav-link" style="background-color: white" href="profile.html">My Profile</a>
 		</nav>
-
-		<!-- jQuery -->
-		<script
-			src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-			crossorigin="anonymous"
-		></script>
 
 		<!-- Popper and Bootstrap JS -->
 		<script
