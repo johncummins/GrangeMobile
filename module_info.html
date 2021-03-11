@@ -31,7 +31,52 @@ and open the template in the editor.
 			<h1 id="mod_title">ModuleInfo</h1>
 		</header>
 
-		<ul class="list-group">
+		<!-- Button trigger modal -->
+		<div style="text-align: center">
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moduleModal" style="margin: 20px">
+				View Module Details
+			</button>
+		</div>
+
+		<!-- Modal -->
+		<div class="modal fade" id="moduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header" style="border-bottom: 0 none">
+						<h3 id="mod_DetailsTitle" class="modal-title" id="exampleModalLongTitle" style="text-align: center">Module Details</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<ul class="list-group">
+							<li class="list-group-item row d-flex">
+								<div class="col-4"><h5>Credits:</h5></div>
+								<div id="creditsDiv" class="col-8"></div>
+							</li>
+							<li class="list-group-item row d-flex">
+								<div class="col-4"><h5>Website:</h5></div>
+								<div id="websiteDiv" class="col-8"></div>
+							</li>
+							<li class="list-group-item row d-flex">
+								<div class="col-4"><h5>Due date:</h5></div>
+								<div id="dueDateDiv" class="col-8"></div>
+							</li>
+							<li class="list-group-item row d-flex">
+								<div class="col-4"><h5>Location:</h5></div>
+								<div id="locationDiv" class="col-4"></div>
+								<div id="locationDiv" class="col-4" style="text-align: right"><button>View on Map</button></div>
+							</li>
+						</ul>
+					</div>
+					<div class="modal-footer" style="border-top: 0 none">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<ul class="list-group" style="margin-bottom: 100px">
 			<li class="list-group-item active">Lecture 1</li>
 			<li class="list-group-item">Lecture 2</li>
 			<li class="list-group-item">Lecture 3</li>
@@ -46,47 +91,6 @@ and open the template in the editor.
 			<li class="list-group-item">Lecture 12</li>
 		</ul>
 
-		<!-- Button trigger modal -->
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moduleModal" style="margin-bottom: 200px">
-			Launch demo modal
-		</button>
-
-		<!-- Modal -->
-		<div class="modal fade" id="moduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h3 id="mod_DetailsTitle" class="modal-title" id="exampleModalLongTitle" style="text-align: center">Module Details</h3>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<ul class="list-group">
-							<li class="list-group-item row d-flex">
-								<div class="col-5"><h5>Credits:</h5></div>
-								<div id="creditsDiv" class="col-7"></div>
-							</li>
-							<li class="list-group-item row d-flex">
-								<div class="col-5"><h5>Website:</h5></div>
-								<div id="websiteDiv" class="col-7"></div>
-							</li>
-							<li class="list-group-item row d-flex">
-								<div class="col-5"><h5>Due date:</h5></div>
-								<div id="dueDateDiv" class="col-7"></div>
-							</li>
-							<li class="list-group-item row d-flex">
-								<div class="col-5"><h5>Location:</h5></div>
-								<div id="locationDiv" class="col-7"></div>
-							</li>
-						</ul>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<script>
 			// storing the clciced module(1 or 2) in the var clickedModValue
 			var clickedModValue = window.localStorage.getItem("clickedMod");
@@ -102,7 +106,7 @@ and open the template in the editor.
 			}
 
 			let divNames = ["creditsDiv", "websiteDiv", "dueDateDiv", "locationDiv"];
-			let keyNames = ["credits", "website", "dueDate", "location"];
+			let keyNames = ["credits", "module.website", "module.dueDate", "module.location"];
 
 			//function that matches the module number with the respective module name
 			$(document).ready(function () {
@@ -114,8 +118,14 @@ and open the template in the editor.
 							//save the 1st module name in local storage under moduleName1
 							window.localStorage.setItem("moduleName1", module.moduleName);
 
-							array1.forEach((element) => console.log(element));
-							$("#module_title1").text(module.moduleName);
+							for (var i = 0; i < divNames.length; i++) {
+								// $("#creditsDiv").text(keyNames[i]);
+								var idVar = divNames[i];
+								$("#creditsDiv").text(module.credits);
+								$("#websiteDiv").text(module.website);
+								$("#dueDateDiv").text(module.dueDate);
+								$("#locationDiv").text(module.location);
+							}
 						}
 						if (clickedModValue == 2) {
 							//same for the 2nd module title
