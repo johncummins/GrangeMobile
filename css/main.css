@@ -1,0 +1,19 @@
+body {
+	/* deals with text getting removed from screen by the notch on iphone XR(whihc I used for testing */
+	padding-top: constant(safe-area-inset-top);
+	padding-top: env(safe-area-inset-top);
+	font-family: Arial;
+	font-size: 17px;
+}
+
+header {
+	text-align: center;
+	background-color: rgb(119, 119, 119);
+	color: white;
+	padding: 20px;
+	border-bottom: 2px #000000 solid;
+	/* margin: 5%; */
+}
+.card {
+	margin: 5%;
+}
