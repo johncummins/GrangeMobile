@@ -65,7 +65,7 @@ and open the template in the editor.
 							<li class="list-group-item row d-flex">
 								<div class="col-4"><h5>Location:</h5></div>
 								<div id="locationDiv" class="col-4"></div>
-								<div id="locationDiv" class="col-4" style="text-align: right"><button>View on Map</button></div>
+								<div id="locationDiv" class="col-4" style="text-align: right"><button onclick="location.href = 'map.html';">View on Map</button></div>
 							</li>
 						</ul>
 					</div>
@@ -106,9 +106,6 @@ and open the template in the editor.
 				document.getElementById("mod_DetailsTitle").innerHTML = modName2 + " module details";
 			}
 
-			let divNames = ["creditsDiv", "websiteDiv", "dueDateDiv", "locationDiv"];
-			let keyNames = ["credits", "module.website", "module.dueDate", "module.location"];
-
 			//function that matches the module number with the respective module name
 			$(document).ready(function () {
 				$.getJSON("http://127.0.0.1:8888/php/json-data-modules.php", function (data) {
@@ -119,12 +116,16 @@ and open the template in the editor.
 							$("#websiteDiv").text(module.website);
 							$("#dueDateDiv").text(module.dueDate);
 							$("#locationDiv").text(module.location);
+							window.localStorage.setItem("location", module.location);
+
 						} else if (clickedModValue == 2 && modName2 == module.moduleName) {
 							//if the 2nd module is clicked, get details related to the named module
 							$("#creditsDiv").text(module.credits);
 							$("#websiteDiv").text(module.website);
 							$("#dueDateDiv").text(module.dueDate);
 							$("#locationDiv").text(module.location);
+							window.localStorage.setItem("location", module.location);
+
 						}
 					}); //End of Loop
 				}); //End of JSON Call
@@ -134,7 +135,7 @@ and open the template in the editor.
 		<!-- Bottom Nav -->
 		<nav class="nav nav-pills fixed-bottom nav-justified" style="height: 60px">
 			<a class="nav-item nav-link active" href="#">Modules</a>
-			<a class="nav-item nav-link" style="background-color: white" href="#">Locations</a>
+			<a class="nav-item nav-link" style="background-color: white" href="map.html"></a>Locations</a>
 			<a class="nav-item nav-link" style="background-color: white" href="profile.html">My Profile</a>
 		</nav>
 

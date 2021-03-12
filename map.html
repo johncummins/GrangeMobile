@@ -38,19 +38,27 @@
 		>
 		</iframe>
         <button>Press me</button> -->
-		<div id="testDiv2">Test</div>
-		<div id="testDiv">Test</div>
+		<div id="location_info">Test</div>
+		<div id="otherModules"><br />Module Lecures Located Here:</div>
+
 		<script>
+			var locationVar = window.localStorage.getItem("location");
+			// var location2Var = window.localStorage.getItem("locations2");
+
 			$(function getLocation() {
 				$.getJSON("http://127.0.0.1:8888/php/json-data-modules.php", function (data) {
 					$.each(data.modules, function (index, module) {
-						function getModulesLocatedHere(modLoc) {
-							if (modLoc == module.location) {
-								$("#testDiv").append("<br><br>Other modules Located Here: " + module.moduleName);
+						// This function gets called once the location has been shown on the map
+						// the location shown on the map is passed into this function via the var "modLocation"
+						// all modules that are located at this location are outputted to the screen
+						function getModulesLocatedHere(modLocation) {
+							if (modLocation == module.location) {
+								$("#otherModules").append("<br>" + module.moduleName);
 							}
 						}
-						if (module.location == "Cathal Brugha Street") {
-							$("#testDiv")
+
+						if (module.location == locationVar) {
+							$("#location_info")
 								.text("Location: " + module.location)
 								.append("<br>")
 								.append("Cordinates: " + module.lat + module.long);
@@ -91,8 +99,8 @@
 
 		<!-- Bottom Nav -->
 		<nav class="nav nav-pills fixed-bottom nav-justified" style="height: 60px">
-			<a class="nav-item nav-link active" href="#">Modules</a>
-			<a class="nav-item nav-link" style="background-color: white" href="map.html">Locations</a>
+			<a class="nav-item nav-link" style="background-color: white" href="modules.html">Modules</a>
+			<a class="nav-item nav-link active" href="map.html">Locations</a>
 			<a class="nav-item nav-link" style="background-color: white" href="profile.html">My Profile</a>
 		</nav>
 
