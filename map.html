@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Map</title>
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+		<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover" />
+
+		<!-- Bootstrap CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+			crossorigin="anonymous"
+		/>
+		<!-- jQuery -->
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		></script>
+		<link href="css/main.css" rel="stylesheet" />
+		<script src="https://use.fontawesome.com/fb1b0ac660.js"></script>
+	</head>
+	<body>
+		<header>Maps</header>
+		<!-- <iframe
+			width="450"
+			height="250"
+			frameborder="0"
+			style="border: 0"
+			src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsFm8JvTialu0qkkpqsOi5CMX2BlwnFlY&q=ballinvoher+cloneygowan+offaly"
+			allowfullscreen
+		>
+		</iframe>
+        <button>Press me</button> -->
+		<div id="testDiv2">Test</div>
+		<div id="testDiv">Test</div>
+		<script>
+			$(function getLocation() {
+				$.getJSON("http://127.0.0.1:8888/php/json-data-modules.php", function (data) {
+					$.each(data.modules, function (index, module) {
+						function getModulesLocatedHere(modLoc) {
+							if (modLoc == module.location) {
+								$("#testDiv").append("<br><br>Other modules Located Here: " + module.moduleName);
+							}
+						}
+						if (module.location == "Cathal Brugha Street") {
+							$("#testDiv")
+								.text("Location: " + module.location)
+								.append("<br>")
+								.append("Cordinates: " + module.lat + module.long);
+							// showing the locaiton on the map, based off the lat and long coordinates
+							var urlbeg = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCsFm8JvTialu0qkkpqsOi5CMX2BlwnFlY&q=";
+							var urlend = "&zoom=18&maptype=roadmap";
+							// var place = "Bolton+Street,Dublin";
+							var lat = module.lat;
+							var lng = module.long;
+							$("iframe").attr("src", urlbeg + lat + "," + lng + urlend);
+							var modLocation = module.location;
+							getModulesLocatedHere(modLocation);
+
+							// $("iframe").attr("src", urlbeg + place + urlend);
+						}
+
+						// while (module.moduleName == "Bolton Street") {
+						// 	var urlbeg = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCsFm8JvTialu0qkkpqsOi5CMX2BlwnFlY&q=";
+						// 	var urlend = "&zoom=18&maptype=roadmap";
+						// 	var place = "Bolton+Street,Dublin";
+						// 	// var lat = module.lat;
+						// 	// var lng = module.long;
+						// 	// $("iframe").attr("src", urlbeg + lat + "," + lng + urlend);
+						// 	$("iframe").attr("src", urlbeg + place + urlend);
+						// }
+					}); //End of Loop
+				}); //End of JSON Call
+			}); //End of document ready function
+			// getLocation(one);
+		</script>
+		<iframe
+			width="600"
+			height="450"
+			frameborder="0"
+			style="border: 0"
+			src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsFm8JvTialu0qkkpqsOi5CMX2BlwnFlY&q=New+York&zoom=18&maptype=roadmap"
+		></iframe>
+
+		<!-- Bottom Nav -->
+		<nav class="nav nav-pills fixed-bottom nav-justified" style="height: 60px">
+			<a class="nav-item nav-link active" href="#">Modules</a>
+			<a class="nav-item nav-link" style="background-color: white" href="map.html">Locations</a>
+			<a class="nav-item nav-link" style="background-color: white" href="profile.html">My Profile</a>
+		</nav>
+
+		<!-- Popper and Bootstrap JS -->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>

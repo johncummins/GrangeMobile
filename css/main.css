@@ -17,3 +17,9 @@ header {
 .card {
 	margin: 5%;
 }
+
+#back-icon {
+	text-align: center;
+	float: left;
+	padding: 20px;
+}

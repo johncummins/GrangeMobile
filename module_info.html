@@ -103,6 +103,7 @@ and open the template in the editor.
 				// if the 2nd module is clicked set module title to
 				var modName2 = window.localStorage.getItem("moduleName2");
 				document.getElementById("mod_title").innerHTML = modName2;
+				document.getElementById("mod_DetailsTitle").innerHTML = modName2 + " module details";
 			}
 
 			let divNames = ["creditsDiv", "websiteDiv", "dueDateDiv", "locationDiv"];
@@ -112,26 +113,18 @@ and open the template in the editor.
 			$(document).ready(function () {
 				$.getJSON("http://127.0.0.1:8888/php/json-data-modules.php", function (data) {
 					$.each(data.modules, function (index, module) {
-						if (clickedModValue == 1) {
-							//if a 1 is passed into this paramter as a function then change the first module title
-							$("#module_title1").text(module.moduleName);
-							//save the 1st module name in local storage under moduleName1
-							window.localStorage.setItem("moduleName1", module.moduleName);
-
-							for (var i = 0; i < divNames.length; i++) {
-								// $("#creditsDiv").text(keyNames[i]);
-								var idVar = divNames[i];
-								$("#creditsDiv").text(module.credits);
-								$("#websiteDiv").text(module.website);
-								$("#dueDateDiv").text(module.dueDate);
-								$("#locationDiv").text(module.location);
-							}
-						}
-						if (clickedModValue == 2) {
-							//same for the 2nd module title
-							$("#module_title2").text(module.moduleName);
-							//save the 2nd module name in local storage under moduleName2
-							window.localStorage.setItem("moduleName2", module.moduleName);
+						if (clickedModValue == 1 && modName1 == module.moduleName) {
+							//if the first module is clicked, get details realted to the named module
+							$("#creditsDiv").text(module.credits); // sets the credits for the module to the display tag in the modal
+							$("#websiteDiv").text(module.website);
+							$("#dueDateDiv").text(module.dueDate);
+							$("#locationDiv").text(module.location);
+						} else if (clickedModValue == 2 && modName2 == module.moduleName) {
+							//if the 2nd module is clicked, get details related to the named module
+							$("#creditsDiv").text(module.credits);
+							$("#websiteDiv").text(module.website);
+							$("#dueDateDiv").text(module.dueDate);
+							$("#locationDiv").text(module.location);
 						}
 					}); //End of Loop
 				}); //End of JSON Call
