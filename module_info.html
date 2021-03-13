@@ -35,7 +35,7 @@ and open the template in the editor.
 		<!-- Button trigger modal -->
 		<div style="text-align: center">
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moduleModal" style="margin: 20px">
-				View Module Details
+				Module Details
 			</button>
 		</div>
 
@@ -67,8 +67,6 @@ and open the template in the editor.
 								<div class="col-4"><h5>Location:</h5></div>
 								<div id="locationDiv" class="col-4"></div>
 								<div id="locationDiv" class="col-4" style="text-align: right"><a href="map.html" id="show_map2"> View on Map</a></div>
-								
-
 							</li>
 						</ul>
 					</div>
@@ -95,21 +93,18 @@ and open the template in the editor.
 		</ul>
 
 		<script>
-			
-
-
 			// storing the clciced module(1 or 2) in the var clickedModValue
 			var clickedModValue = window.localStorage.getItem("clickedMod");
 			if (clickedModValue == 1) {
 				// if the first module is clicked
 				var modName1 = window.localStorage.getItem("moduleName1");
 				document.getElementById("mod_title").innerHTML = modName1;
-				document.getElementById("mod_DetailsTitle").innerHTML = modName1 + " module details";
+				// document.getElementById("mod_DetailsTitle").innerHTML = modName1 + " module details";
 			} else {
 				// if the 2nd module is clicked set module title to
 				var modName2 = window.localStorage.getItem("moduleName2");
 				document.getElementById("mod_title").innerHTML = modName2;
-				document.getElementById("mod_DetailsTitle").innerHTML = modName2 + " module details";
+				// document.getElementById("mod_DetailsTitle").innerHTML = modName2 + " module details";
 			}
 
 			//function that matches the module number with the respective module name
@@ -123,7 +118,6 @@ and open the template in the editor.
 							$("#dueDateDiv").text(module.dueDate);
 							$("#locationDiv").text(module.location);
 							window.localStorage.setItem("location", module.location);
-
 						} else if (clickedModValue == 2 && modName2 == module.moduleName) {
 							//if the 2nd module is clicked, get details related to the named module
 							$("#creditsDiv").text(module.credits);
@@ -131,7 +125,6 @@ and open the template in the editor.
 							$("#dueDateDiv").text(module.dueDate);
 							$("#locationDiv").text(module.location);
 							window.localStorage.setItem("location", module.location);
-
 						}
 					}); //End of Loop
 				}); //End of JSON Call
@@ -140,8 +133,8 @@ and open the template in the editor.
 
 		<!-- Bottom Nav -->
 		<nav class="nav nav-pills fixed-bottom nav-justified" style="height: 60px">
-			<a class="nav-item nav-link active" href="#">Modules</a>
-			<a class="nav-item nav-link" style="background-color: white" href="map.html"></a>Locations</a>
+			<a class="nav-item nav-link active" href="modules.html">Modules</a>
+			<a class="nav-item nav-link" style="background-color: white" href="map.html">Locations</a>
 			<a class="nav-item nav-link" style="background-color: white" href="profile.html">My Profile</a>
 		</nav>
 
