@@ -23,8 +23,9 @@ and open the template in the editor.
 			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 			crossorigin="anonymous"
 		></script>
-
 		<link href="css/main.css" rel="stylesheet" />
+		<script src="https://use.fontawesome.com/fb1b0ac660.js"></script>
+		<script type="text/javascript" src="js/modules.js"></script>
 	</head>
 	<body>
 		<header>
@@ -65,7 +66,9 @@ and open the template in the editor.
 							<li class="list-group-item row d-flex">
 								<div class="col-4"><h5>Location:</h5></div>
 								<div id="locationDiv" class="col-4"></div>
-								<div id="locationDiv" class="col-4" style="text-align: right"><button onclick="location.href = 'map.html';">View on Map</button></div>
+								<div id="locationDiv" class="col-4" style="text-align: right"><a href="map.html" id="show_map2"> View on Map</a></div>
+								
+
 							</li>
 						</ul>
 					</div>
@@ -92,6 +95,9 @@ and open the template in the editor.
 		</ul>
 
 		<script>
+			
+
+
 			// storing the clciced module(1 or 2) in the var clickedModValue
 			var clickedModValue = window.localStorage.getItem("clickedMod");
 			if (clickedModValue == 1) {

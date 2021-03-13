@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
 	<head>
 		<meta charset="utf-8" />
@@ -25,70 +21,13 @@
 		></script>
 		<link href="css/main.css" rel="stylesheet" />
 		<script src="https://use.fontawesome.com/fb1b0ac660.js"></script>
+		<script type="text/javascript" src="js/modules.js"></script>
 	</head>
 	<body>
 		<header>Maps</header>
-		<!-- <iframe
-			width="450"
-			height="250"
-			frameborder="0"
-			style="border: 0"
-			src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCsFm8JvTialu0qkkpqsOi5CMX2BlwnFlY&q=ballinvoher+cloneygowan+offaly"
-			allowfullscreen
-		>
-		</iframe>
-        <button>Press me</button> -->
 		<div id="location_info">Test</div>
 		<div id="otherModules"><br />Module Lecures Located Here:</div>
 
-		<script>
-			var locationVar = window.localStorage.getItem("location");
-			// var location2Var = window.localStorage.getItem("locations2");
-
-			$(function getLocation() {
-				$.getJSON("http://127.0.0.1:8888/php/json-data-modules.php", function (data) {
-					$.each(data.modules, function (index, module) {
-						// This function gets called once the location has been shown on the map
-						// the location shown on the map is passed into this function via the var "modLocation"
-						// all modules that are located at this location are outputted to the screen
-						function getModulesLocatedHere(modLocation) {
-							if (modLocation == module.location) {
-								$("#otherModules").append("<br>" + module.moduleName);
-							}
-						}
-
-						if (module.location == locationVar) {
-							$("#location_info")
-								.text("Location: " + module.location)
-								.append("<br>")
-								.append("Cordinates: " + module.lat + module.long);
-							// showing the locaiton on the map, based off the lat and long coordinates
-							var urlbeg = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCsFm8JvTialu0qkkpqsOi5CMX2BlwnFlY&q=";
-							var urlend = "&zoom=18&maptype=roadmap";
-							// var place = "Bolton+Street,Dublin";
-							var lat = module.lat;
-							var lng = module.long;
-							$("iframe").attr("src", urlbeg + lat + "," + lng + urlend);
-							var modLocation = module.location;
-							getModulesLocatedHere(modLocation);
-
-							// $("iframe").attr("src", urlbeg + place + urlend);
-						}
-
-						// while (module.moduleName == "Bolton Street") {
-						// 	var urlbeg = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCsFm8JvTialu0qkkpqsOi5CMX2BlwnFlY&q=";
-						// 	var urlend = "&zoom=18&maptype=roadmap";
-						// 	var place = "Bolton+Street,Dublin";
-						// 	// var lat = module.lat;
-						// 	// var lng = module.long;
-						// 	// $("iframe").attr("src", urlbeg + lat + "," + lng + urlend);
-						// 	$("iframe").attr("src", urlbeg + place + urlend);
-						// }
-					}); //End of Loop
-				}); //End of JSON Call
-			}); //End of document ready function
-			// getLocation(one);
-		</script>
 		<iframe
 			width="600"
 			height="450"
