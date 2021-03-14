@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+	<head>
+		<title>Grange Mobile</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover" />
+
+		<!-- Bootstrap CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+			crossorigin="anonymous"
+		/>
+		<!-- jQuery -->
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		></script>
+		<link href="css/main.css" rel="stylesheet" />
+		<script src="https://use.fontawesome.com/fb1b0ac660.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1 id="mod_title">ModuleInfo</h1>
+		</header>
+
+		<!-- Modal -->
+		<div class="modal fade" id="moduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header" style="border-bottom: 0 none">
+						<h3 id="mod_DetailsTitle" class="modal-title" id="exampleModalLongTitle" style="text-align: center">Module Details</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<ul class="list-group">
+							<li class="list-group-item row d-flex">
+								<div class="col-4"><h5>Credits:</h5></div>
+								<div id="creditsDiv" class="col-8"></div>
+							</li>
+							<li class="list-group-item row d-flex">
+								<div class="col-4"><h5>Website:</h5></div>
+								<div id="websiteDiv" class="col-8"></div>
+							</li>
+							<li class="list-group-item row d-flex">
+								<div class="col-4"><h5>Due date:</h5></div>
+								<div id="dueDateDiv" class="col-8"></div>
+							</li>
+							<li class="list-group-item row d-flex">
+								<div class="col-4"><h5>Location:</h5></div>
+								<div id="locationDiv" class="col-4"></div>
+								<div id="locationDiv" class="col-4" style="text-align: right"><a href="map.html" id="show_map2"> View on Map</a></div>
+							</li>
+						</ul>
+					</div>
+					<div class="modal-footer" style="border-top: 0 none">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card card-mod-info text-center">
+			<img src="img/history_digital_media.png" class="card-img-top" alt="history of digital media" />
+			<div class="card-body">
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-mod-details btn-primary" data-toggle="modal" data-target="#moduleModal">View Details</button>
+			</div>
+		</div>
+
+		<ul class="list-group">
+			<li class="list-group-item active">Lecture 1</li>
+			<li class="list-group-item">Lecture 2</li>
+			<li class="list-group-item">Lecture 3</li>
+			<li class="list-group-item">Lecture 4</li>
+			<li class="list-group-item">Lecture 5</li>
+			<li class="list-group-item">Lecture 6</li>
+			<li class="list-group-item">Lecture 7</li>
+			<li class="list-group-item">Lecture 8</li>
+			<li class="list-group-item">Lecture 9</li>
+			<li class="list-group-item">Lecture 10</li>
+			<li class="list-group-item">Lecture 11</li>
+			<li class="list-group-item">Lecture 12</li>
+		</ul>
+
+		<script>
+			// storing the clciced module(1 or 2) in the var clickedModValue
+			var clickedModValue = window.localStorage.getItem("clickedMod");
+			if (clickedModValue == 1) {
+				// if the first module is clicked
+				var modName1 = window.localStorage.getItem("moduleName1");
+				document.getElementById("mod_title").innerHTML = modName1;
+				// document.getElementById("mod_DetailsTitle").innerHTML = modName1 + " module details";
+			} else {
+				// if the 2nd module is clicked set module title to
+				var modName2 = window.localStorage.getItem("moduleName2");
+				document.getElementById("mod_title").innerHTML = modName2;
+				// document.getElementById("mod_DetailsTitle").innerHTML = modName2 + " module details";
+			}
+
+			//function that matches the module number with the respective module name
+			$(document).ready(function () {
+				$.getJSON("http://127.0.0.1:8888/php/json-data-modules.php", function (data) {
+					$.each(data.modules, function (index, module) {
+						if (clickedModValue == 1 && modName1 == module.moduleName) {
+							//if the first module is clicked, get details realted to the named module
+							$("#creditsDiv").text(module.credits); // sets the credits for the module to the display tag in the modal
+							$("#websiteDiv").text(module.website);
+							$("#dueDateDiv").text(module.dueDate);
+							$("#locationDiv").text(module.location);
+							window.localStorage.setItem("location", module.location);
+						} else if (clickedModValue == 2 && modName2 == module.moduleName) {
+							//if the 2nd module is clicked, get details related to the named module
+							$("#creditsDiv").text(module.credits);
+							$("#websiteDiv").text(module.website);
+							$("#dueDateDiv").text(module.dueDate);
+							$("#locationDiv").text(module.location);
+							window.localStorage.setItem("location", module.location);
+						}
+					}); //End of Loop
+				}); //End of JSON Call
+			});
+		</script>
+
+		<!-- Bottom Nav -->
+		<nav class="nav nav-pills fixed-bottom nav-justified navbar-custom active-color">
+			<a class="active nav-item nav-link" href="modules.html">Modules</a>
+			<a class="navbar-brand nav-item nav-link" href="map.html">Locations</a>
+			<a class="navbar-brand nav-item nav-link" href="profile.html">My Profile</a>
+		</nav>
+
+		<!-- Popper and Bootstrap JS -->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
