@@ -25,19 +25,12 @@ and open the template in the editor.
 		></script>
 		<link href="css/main.css" rel="stylesheet" />
 		<script src="https://use.fontawesome.com/fb1b0ac660.js"></script>
-		<script type="text/javascript" src="js/modules.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
 	</head>
 	<body>
 		<header>
 			<h1 id="mod_title">ModuleInfo</h1>
 		</header>
-
-		<!-- Button trigger modal -->
-		<div style="text-align: center">
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moduleModal" style="margin: 20px">
-				Module Details
-			</button>
-		</div>
 
 		<!-- Modal -->
 		<div class="modal fade" id="moduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -77,7 +70,15 @@ and open the template in the editor.
 			</div>
 		</div>
 
-		<ul class="list-group" style="margin-bottom: 100px">
+		<div class="card card-mod-info text-center">
+			<img src="img/history_digital_media.png" class="card-img-top" alt="history of digital media" />
+			<div class="card-body">
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-mod-details btn-primary" data-toggle="modal" data-target="#moduleModal">View Details</button>
+			</div>
+		</div>
+
+		<ul class="list-group">
 			<li class="list-group-item active">Lecture 1</li>
 			<li class="list-group-item">Lecture 2</li>
 			<li class="list-group-item">Lecture 3</li>
@@ -132,10 +133,10 @@ and open the template in the editor.
 		</script>
 
 		<!-- Bottom Nav -->
-		<nav class="nav nav-pills fixed-bottom nav-justified" style="height: 60px">
-			<a class="nav-item nav-link active" href="modules.html">Modules</a>
-			<a class="nav-item nav-link" style="background-color: white" href="map.html">Locations</a>
-			<a class="nav-item nav-link" style="background-color: white" href="profile.html">My Profile</a>
+		<nav class="nav nav-pills fixed-bottom nav-justified navbar-custom active-color">
+			<a class="active nav-item nav-link" href="modules.html">Modules</a>
+			<a class="navbar-brand nav-item nav-link" href="map.html">Locations</a>
+			<a class="navbar-brand nav-item nav-link" href="profile.html">My Profile</a>
 		</nav>
 
 		<!-- Popper and Bootstrap JS -->

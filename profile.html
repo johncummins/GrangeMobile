@@ -24,19 +24,37 @@ and open the template in the editor.
 			crossorigin="anonymous"
 		></script>
 		<link href="css/main.css" rel="stylesheet" />
+		<script src="https://use.fontawesome.com/fb1b0ac660.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
 	</head>
 	<body>
 		<header>
 			<h1>Your Profile</h1>
-		</header>
-		<!-- Profile Code -->
+			<img class="profile-img" src="img/profile_image.png">
 
-		<!-- Bottom Nav -->
-		<nav class="nav nav-pills fixed-bottom nav-justified" style="height: 60px">
-			<a class="nav-item nav-link" style="background-color: white" href="modules.html">Modules</a>
-			<a class="nav-item nav-link" style="background-color: white" href="map.html">Locations</a>
-			<a class="nav-item nav-link active" href="#">My Profile</a>
-		</nav>
+			<!-- Bottom Nav -->
+			<nav class="nav nav-pills fixed-bottom nav-justified navbar-custom">
+				<a class="navbar-brand nav-item nav-link" href="modules.html">Modules</a>
+				<a class="navbar-brand nav-item nav-link" href="map.html">Locations</a>
+				<a class="navbar-brand nav-item nav-link active href="profile.html">My Profile</a>
+			</nav>
+		</header>
+
+		<div class="card text-center">
+			<div class="card-header text-muted">
+			</div>
+			<div class="card-body profile-body">
+			  <h5 class="card-title">John Smith</h5>
+			  <p class="card-text profile-text">Student Number:</p>
+			  <p class="card-text profile-text">Student email:</p>
+			  <p class="card-text profile-text">Course:</p>
+			  <p class="card-text profile-text">Modules:</p>
+
+
+			</div>
+			<div class="card-footer text-muted">
+			</div>
+		  </div>
 
 		<!-- Popper and Bootstrap JS -->
 		<script

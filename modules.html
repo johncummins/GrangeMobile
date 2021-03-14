@@ -26,36 +26,57 @@ and open the template in the editor.
 		></script>
 		<link href="css/main.css" rel="stylesheet" />
 		<script src="https://use.fontawesome.com/fb1b0ac660.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
 	</head>
 	<body>
 		<header>
 			<!-- <img class="back-icon" src="https://img.icons8.com/ios-filled/24/000000/back.png" /> -->
 			<a href="index.html"><i id="back-icon" class="fa fa-chevron-left"></i></a>
 			<h1>Your Modules</h1>
+			<!-- Bottom Nav -->
+			<nav class="nav nav-pills fixed-bottom nav-justified navbar-custom">
+				<a class="navbar-brand nav-item nav-link active" href="modules.html">Modules</a>
+				<a class="navbar-brand nav-item nav-link" href="map.html">Locations</a>
+				<a class="navbar-brand nav-item nav-link" href="profile.html">My Profile</a>
+			</nav>
 		</header>
 		<!-- Card 1 -->
 		<div class="card">
-			<img src="img/history_digital_media.png" class="card-img-top" alt="..." />
-			<div class="card-body">
-				<h5 id="module_title1" class="card-title">Card with stretched link</h5>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<!-- <a href="module_info.html" class="btn btn-primary stretched-link" onclick="moduleInfo(1)">Go somewhere</a> -->
-				<a href="module_info.html" class="btn btn-primary stretched-link" onclick="setModuleName(1)">Go somewhere</a>
+			<img src="img/history_digital_media.png" class="card-img-top" alt="history of digital media" />
+			<div class="card-body row h-50 form-inline mod-body">
+				<div class="col-12">
+					<h5 id="module_title1" class="card-title">Card with stretched link</h5>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-7">
+					<p class="card-text">Some quick example text</p>
+				</div>
+				<div class="col-5">
+					<a href="module_info.html" class="btn btn-mod btn-primary stretched-link" onclick="setModuleName(1)">More info</a>
+				</div>
+			</div>
 			</div>
 		</div>
 
 		<!-- Card 2 -->
-		<div class="card" style="margin-bottom: 10%" ;>
-			<img src="img/programming_banner.jpg" class="card-img-top" alt="..." />
-			<div class="card-body">
-				<h5 id="module_title2" class="card-title">Card with stretched link</h5>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="module_info.html" class="btn btn-primary stretched-link" onclick="setModuleName(2)">Go somewhere</a>
+		<div class="card" ;>
+			<img src="img/programming_banner.jpg" class="card-img-top" alt="screen full of code" />
+			<div class="card-body row h-50 form-inline">
+				<div class="col-12">
+					<h5 id="module_title2" class="card-title">Card with stretched link</h5>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-7">
+					<p class="card-text">Some quick example text</p>
+				</div>
+				<div class="col-5">
+					<a href="module_info.html" class="btn btn-mod btn-primary stretched-link" onclick="setModuleName(2)">More info</a>
+				</div>
+			</div>
 			</div>
 		</div>
-
-		<div id="change_me" style="margin: 200px">Change me</div>
-
 		<script>
 			// var userID = "123";
 			var userID = window.localStorage.getItem("loggedInUser");
@@ -106,13 +127,6 @@ and open the template in the editor.
 				}
 			}
 		</script>
-
-		<!-- Bottom Nav -->
-		<nav class="nav nav-pills fixed-bottom nav-justified" style="height: 60px">
-			<a class="nav-item nav-link active" href="#">Modules</a>
-			<a class="nav-item nav-link" style="background-color: white" href="map.html">Locations</a>
-			<a class="nav-item nav-link" style="background-color: white" href="profile.html">My Profile</a>
-		</nav>
 
 		<!-- Popper and Bootstrap JS -->
 		<script

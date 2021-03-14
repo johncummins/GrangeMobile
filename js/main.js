@@ -13,13 +13,17 @@ $(function getLocation() {
 			// all modules that are located at this location are outputted to the screen
 			function getModulesLocatedHere(modLoc) {
 				if (modLoc == module.location) {
-					$("#otherModules").append("<br>" + module.moduleName);
+					$("#otherModules").append(module.moduleName + "<br>");
 				}
 			}
 
+			// if (passedInLoc) {
+			// 	LocationVar = passedInLoc;
+			// }
+
 			if (module.location == locationVar) {
 				// showing the locaiton on the map, based off the lat and long coordinates
-				var urlbeg = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCsFm8JvTialu0qkkpqsOi5CMX2BlwnFlY&q=";
+				var urlbeg = "https://www.google.com/maps/embed/v1/place?key=AIzaSyCtWWW1dJaKuydA632_rukTrh0Z6kx7vls&q=";
 				var urlend = "&zoom=18&maptype=roadmap";
 				var lat = module.lat;
 				var lng = module.long;
@@ -34,8 +38,12 @@ $(function getLocation() {
 
 // function to ouput the modules detials
 function specificModuleInfo(modLoc, lat, lng) {
-	$("#location_info")
-		.text("Location: " + modLoc)
-		.append("<br>")
-		.append("Cordinates: " + lat + "," + lng);
+	$("#location_title").text(modLoc);
+	$("#location_title1").text("Course lectures located at " + modLoc);
+	$("#location_info").text("Cordinates: " + lat + "," + lng);
+}
+
+function getNewLocation(passedInLoc) {
+	window.localStorage.setItem("location", passedInLoc);
+	// $(".map-iframe").load("/map.html .mod-info .maps-card .map-iframe");
 }
