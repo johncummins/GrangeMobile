@@ -41,12 +41,15 @@ iframe {
 
 .navbar-custom {
 	background-color: var(--off-white-color);
-	height: 60px;
+	height: 70px;
 	border-top: 0.5px var(--main-color) solid;
 }
 .nav-pills .nav-link {
 	color: var(--main-color);
 }
+/* .fa-map-marked-alt {
+	color: var(--main-color) !important;
+} */
 
 .nav-pills .nav-link.active {
 	background-color: var(--main-color) !important;
