@@ -31,6 +31,12 @@ and open the template in the editor.
 		<header>
 			<h1 id="mod_title">ModuleInfo</h1>
 		</header>
+				<!-- Bottom Nav -->
+				<nav class="nav nav-pills fixed-bottom nav-justified navbar-custom active-color">
+					<a class="active nav-item nav-link" href="modules.html"><i class="fa fa-book"></i><br></i>Modules</a>
+					<a class="nav-item nav-link" href="map.html"><i class="fa fa-map"></i><br>Locations</a>
+					<a class="nav-item nav-link" href="profile.html"><i class="fa fa-user"></i><br></i>My Profile</a>
+				</nav>
 
 		<!-- Modal -->
 		<div class="modal fade" id="moduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -61,6 +67,10 @@ and open the template in the editor.
 								<div id="locationDiv" class="col-4"></div>
 								<div id="locationDiv" class="col-4" style="text-align: right"><a href="map.html" id="show_map2"> View on Map</a></div>
 							</li>
+							<li class="list-group-item row d-flex">
+								<div class="col-4"><h5>Room:</h5></div>
+								<div id="roomDiv" class="col-8"></div>
+							</li>
 						</ul>
 					</div>
 					<div class="modal-footer" style="border-top: 0 none">
@@ -77,9 +87,9 @@ and open the template in the editor.
 				<button type="button" class="btn btn-mod-details btn-primary" data-toggle="modal" data-target="#moduleModal">View Details</button>
 			</div>
 		</div>
-
+		<h2>Lectures</h2>
 		<ul class="list-group">
-			<li class="list-group-item active">Lecture 1</li>
+			<li class="list-group-item">Lecture 1</li>
 			<li class="list-group-item">Lecture 2</li>
 			<li class="list-group-item">Lecture 3</li>
 			<li class="list-group-item">Lecture 4</li>
@@ -118,26 +128,20 @@ and open the template in the editor.
 							$("#websiteDiv").text(module.website);
 							$("#dueDateDiv").text(module.dueDate);
 							$("#locationDiv").text(module.location);
+							$("#roomDiv").text(module.room);
 							window.localStorage.setItem("location", module.location);
 						} else if (clickedModValue == 2 && modName2 == module.moduleName) {
 							//if the 2nd module is clicked, get details related to the named module
 							$("#creditsDiv").text(module.credits);
 							$("#websiteDiv").text(module.website);
 							$("#dueDateDiv").text(module.dueDate);
-							$("#locationDiv").text(module.location);
+							$("#roomDiv").text(module.room);
 							window.localStorage.setItem("location", module.location);
 						}
 					}); //End of Loop
 				}); //End of JSON Call
 			});
 		</script>
-
-		<!-- Bottom Nav -->
-		<nav class="nav nav-pills fixed-bottom nav-justified navbar-custom active-color">
-			<a class="active nav-item nav-link" href="modules.html">Modules</a>
-			<a class="navbar-brand nav-item nav-link" href="map.html">Locations</a>
-			<a class="navbar-brand nav-item nav-link" href="profile.html">My Profile</a>
-		</nav>
 
 		<!-- Popper and Bootstrap JS -->
 		<script

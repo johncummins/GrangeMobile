@@ -26,15 +26,16 @@ and open the template in the editor.
 
 		<div class="card text-center">
 			<div class="card-header">
-			  <h1>User Login</h1>
+			  <h1>Student Login</h1>
 			</div>
 			<div class="card-body login-body">
 			  <p class="card-text">
 				<form action="/modules.html" method="POST">
-					<!-- <label for="input_id">User ID:</label> -->
-					<input type="text" id="input_id" value="" placeholder="Enter user ID">
-					<input class="btn btn-primary login-btn" type="button" value="Login" onclick="storeLoggedInUser()" />
+					<label for="input_id">Student ID:</label><br>
+					<input type="text" id="input_id" value="" placeholder="Enter student ID here">
 					<div id="alert" style="color: red"></div>
+					<input class="btn btn-primary login-btn" type="button" value="Login" onclick="storeLoggedInUser()" />
+
 				</form>
 			  </p>
 			</div>
@@ -50,8 +51,8 @@ and open the template in the editor.
 				var formInput = document.getElementById("input_id").value;
 				//setting the form input the local storage var
 
-				if (formInput < 123) {
-					document.getElementById("alert").innerHTML = "Please Enter your 3 digit ID number";
+				if (formInput < 123 | formInput > 152) {
+					document.getElementById("alert").innerHTML = "Please enter a valid student ID";
 				} else {
 					window.localStorage.setItem("loggedInUser", formInput);
 					//getting the stored item back

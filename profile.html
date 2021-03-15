@@ -31,30 +31,29 @@ and open the template in the editor.
 		<header class="profile-header">
 			<h1>Your Profile</h1>
 			<img class="profile-img" src="img/profile_image.png">
-
-			<!-- Bottom Nav -->
-			<nav class="nav nav-pills fixed-bottom nav-justified navbar-custom">
-				<a class="navbar-brand nav-item nav-link" href="modules.html">Modules</a>
-				<a class="navbar-brand nav-item nav-link" href="map.html">Locations</a>
-				<a class="navbar-brand nav-item nav-link active href="profile.html">My Profile</a>
-			</nav>
 		</header>
+
+		<!-- Bottom Nav -->
+		<nav class="nav nav-pills fixed-bottom navbar-custom nav-justified">
+			<a class="nav-item nav-link" href="modules.html"><i class="fa fa-book"></i><br>Modules</a>
+			<a class="nav-item nav-link" href="map.html"><i class="fa fa-map"></i><br>Locations</a>
+			<a class="nav-item nav-link active href="profile.html"><i class="fa fa-user"></i><br>My Profile</a>
+		</nav>
 
 		<div class="card text-center">
 			<!-- <div class="card-header text-muted">
 			</div> -->
 			<div class="card-body profile-body">
-			  <h5 class="card-title">John Smith</h5>
-			  <p class="card-text profile-text">Student Number:</p>
-			  <p class="card-text profile-text">Student email:</p>
-			  <p class="card-text profile-text">Course:</p>
-			  <p class="card-text profile-text">Modules:</p>
-
-
+			  <h5 class="card-title profile-title" id="studentName">John Smith</h5>
+			  <p class="card-text profile-text" id="studentID">Student Number:</p>
+			  <p class="card-text profile-text" id="modules">Moudles</p>
+			  <p class="card-text profile-text" id="courseID">Course:</p>
 			</div>
-			<!-- <div class="card-footer text-muted"> -->
 			</div>
-		  </div>
+			<div class="profile-page">
+				<a href="index.html">Logout</a>
+			</div>
+
 
 		<!-- Popper and Bootstrap JS -->
 		<script

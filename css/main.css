@@ -117,6 +117,13 @@ iframe {
 .dropdown-menu a {
 	color: white;
 }
+#locationDiv a {
+	color: var(--main-color);
+}
+.card-footer a {
+	color: var(--main-color);
+	font-size: 14px;
+}
 /* Module info cards */
 
 .card img {
@@ -161,7 +168,7 @@ iframe {
 	/* background-color: var(--main-color); */
 }
 .list-group .list-group-item.active {
-	background-color: var(--main-color) !important;
+	background-color: var(--light-blue) !important;
 }
 .card-mod-info {
 	margin-bottom: 4%;
@@ -183,6 +190,7 @@ iframe {
 .card .card-title {
 	font-weight: 600;
 	font-size: 26px;
+	text-align: left;
 }
 .card .card-text {
 	text-align: center;
@@ -202,6 +210,13 @@ iframe {
 	margin-bottom: 0%;
 	width: 60%;
 }
+.card .profile-title {
+	text-align: center;
+}
+.card #location_title,
+#location_title1 {
+	text-align: center;
+}
 .card .card-text {
 	text-align: left;
 	margin-top: 5%;
@@ -211,4 +226,10 @@ iframe {
 }
 .profile-header {
 	margin-bottom: 6%;
+}
+.profile-page a {
+	color: var(--main-color);
+}
+.profile-page {
+	margin-bottom: 300px;
 }
